@@ -12,7 +12,7 @@ import Button from '@material-ui/core/Button';
 import Footer from './Footer';
 import SignIn from './Signin';
 import SignUp from './Signup';
-//import SignContainer from './SignInUp';
+
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import cs1 from './cs1.jpg';
@@ -25,9 +25,8 @@ const useStyles = makeStyles({
     paddingTop: '5px',
     height: '300px',
     width: '1180px',
-//    margin: 'auto',
     marginLeft: "40px",
-      marginRight: "40px",
+    marginRight: "40px",
     backgroundColor: "#E5E7E9",
 
     '&:hover': {
@@ -90,8 +89,7 @@ function Slideshow(){
         </Carousel>
 
       </Grid>
-      {/* <br />
-        <br /> */}
+     
 
       <Grid item xs={4}>
         <SignIn />
