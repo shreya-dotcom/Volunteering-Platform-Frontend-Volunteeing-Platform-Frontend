@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    //marginRight:theme.spacing(5),
     textAlign: 'left',
   },
 }));
@@ -82,16 +81,7 @@ const StyledMenu = withStyles({
     {...props}
   />
 ));
-// const StyledMenuItem = withStyles((theme) => ({
-//   root: {
-//     '&:focus': {
-//        backgroundColor: theme.palette.primary.main,
-//       '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-//         color: theme.palette.common.white,
-//       },
-//     },
-//   },
-// }))(MenuItem);
+
 
 
 export default function MenuAppBar(props) {
@@ -100,9 +90,6 @@ export default function MenuAppBar(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
-  /*const handleChange = (event) => {
-    setAuth(event.target.checked);
-  };*/
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -153,12 +140,7 @@ export default function MenuAppBar(props) {
   return (
     <Box mb={10}>
       <div className={classes.root}>
-        {/*<FormGroup>
-        <FormControlLabel
-          control={<Switch checked={auth} onChange={handleChange} aria-label="login switch" />}
-          label={auth ? 'Logout' : 'Login'}
-        />
-      </FormGroup>*/}
+        
         <CssBaseline />
         <ElevationScroll {...props}>
           <AppBar style={{ height: 60, backgroundColor: '#199bf1' }}>
@@ -170,16 +152,7 @@ export default function MenuAppBar(props) {
               </Typography>
               {auth && (
                 <div>
-                  {/* <IconButton
-                aria-label="menu"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-               <ArrowDropDownIcon></ArrowDropDownIcon>
-              </IconButton> */}
-
+                
                   <Tooltip title="Go to Home page">
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="Home" onClick={goHome}>
                       <HomeIcon />
@@ -190,16 +163,7 @@ export default function MenuAppBar(props) {
                   <StyledMenu
                     id="menu-appbar"
                     anchorEl={anchorEl}
-                    // anchorOrigin={{
-                    //   vertical: 'top',
-                    //   horizontal: 'right',
-                    // }}
-                    // keepMounted
-                    // transformOrigin={{
-                    //   vertical: 'top',
-                    //   horizontal: 'right',
-                    // }}
-                    // open={open}
+                  
                     keepMounted
                     open={Boolean(anchorEl)}
                     onClose={handleClose}
@@ -224,8 +188,7 @@ export default function MenuAppBar(props) {
                         </ListItem>
                       </List>
                     </MenuItem>
-                    {/*<MenuItem onClick={handleClose}>{role===admin?<Admincomp/>:null}</MenuItem>
-                <MenuItem onClick={handleClose}>{role===leader?<Leadercomp/>:null}</MenuItem>*/}
+                    
                     {role === admin ? <MenuItem onClick={handleAdminpg}><Admincomp /></MenuItem> : null}
                     {role === leader ? <MenuItem onClick={handleLeader}><Leadercomp /></MenuItem> : null}
                     <MenuItem onClick={handleSignout}>
