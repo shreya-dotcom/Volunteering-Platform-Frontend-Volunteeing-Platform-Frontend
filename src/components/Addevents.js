@@ -2,26 +2,25 @@ import { React, Fragment } from 'react'
 import { Avatar, Button, Grid, TextField, Box } from '@material-ui/core'
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import { Form, Formik, Field, ErrorMessage } from 'formik';
-// import Snackbar from '@material-ui/core/Snackbar';
+
 import axios from 'axios';
 import { useState } from 'react';
 import Snack from './Snackbar';
-// import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 import { useHistory } from 'react-router-dom';
 import UploadImage from "./Uploadimages";
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import * as Yup from 'yup';
-// import Homebar from "./Homebar";
-// import Footer from './Footer';
+
 import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 
 
 const Add_Event = (props) => {
-    // const paperStyle = { padding: '20px 20px', width: 800, height: 460, margin: "30px auto" }
+   
     const headerStyle = { margin: 0 }
     const avatarStyle = { backgroundColor: '' }
-    //const btnStyle = { margin: '10px 5px 10px auto', display: 'flex', justify: 'space-between', alignItems: 'right' }
+   
     const formStyle = { textAlign: 'center' }
     const marginTop = { marginTop: '10px', marginBottom: '10px' }
     const initialValues = {
@@ -29,7 +28,6 @@ const Add_Event = (props) => {
         event_type: '',
         description: '',
         venue: '',
-        // eventDate: '',
         start_time: '',
         end_time: ''
     }
@@ -40,9 +38,7 @@ const Add_Event = (props) => {
     const [notify, setNotify] = useState({ isOpen: false, mesg: '' });
     const [imgdialog, setImgdialog] = useState({ isOp: false });
     const { add, setAdd } = props;
-    // const handleImage = () => {
-    //     // history.push('/UploadImage')
-    // }
+  
 
     let history = useHistory();
 
@@ -53,7 +49,7 @@ const Add_Event = (props) => {
 
     };
     const onSubmit = (values, props) => {
-        // event.preventDefault();
+       
         const Event = {
             name: values.eventName,
             event_type: values.eventType,
@@ -68,7 +64,7 @@ const Add_Event = (props) => {
             .then((response) => {
                 var resp = response.status;
                 console.log(response.data);
-                // var evid=response.data.event_id;
+               
                 localStorage.setItem('feventid', JSON.stringify(response.data.event_id));
                 console.log(response.status)
                 if (resp === 200) {
@@ -92,7 +88,7 @@ const Add_Event = (props) => {
             .catch((error) => {
                 if (error.status.response === 400) {
                     console.log(error.response.data.message);
-                    //  alert("Email already exist")
+                    
                     setOpen(true);
                     setMesg(error.response.data.message);
                     setNotify({
@@ -102,7 +98,7 @@ const Add_Event = (props) => {
                     props.resetForm()
                 }
                 else {
-                    //    alert("Something went wrong");
+                   
                     setOpen(true);
                     setMesg("Something went wrong");
                     setNotify({
@@ -115,17 +111,6 @@ const Add_Event = (props) => {
 
 
     }
-
-    // const handleClose = (event, reason) => {
-    //     if (success) {
-    //         setOpen(false);
-    //         history.push('/');
-    //     }
-    //     else {
-    //         setOpen(false);
-
-    //     }
-    // };
 
 
 
@@ -152,16 +137,10 @@ const Add_Event = (props) => {
                 aria-describedby="alert-dialog-description"
             >    <center>
                     <DialogTitle id="past-event-dialog-title">Add Events</DialogTitle>
-                    {/* <Paper elevation={20} style={paperStyle}> */}
+                   
                     <DialogContent >
                         <Box mr={10}>
-                            {/* <Grid container direction="row" alignItems="center" justifyContent="center"> */}
-                            {/* <Avatar style={avatarStyle}>
-                                <AddBoxIcon />
-                            </Avatar> */}
-                            {/* <h2 style={headerStyle}>Add Events</h2> */}
-
-                            {/* </Grid> */}
+                           
 
                             <Formik initialValues={initialValues} eventSchema={eventSchema} onSubmit={onSubmit}>
 
@@ -227,10 +206,7 @@ const Add_Event = (props) => {
 
                                         </div>
                                         <Grid container justify="flex-end">
-                                            {/* <Button type='create' variant='contained'  color='primary' style={btnStyle} */}
-
-
-                                            {/* >Create Event</Button> */}
+                                           
                                             <Button type='submit' color='primary'  disabled={props.isSubmitting}
                                                 style={marginTop} >{props.isSubmitting ? "Loading" : "Create"}</Button>&nbsp;&nbsp;&nbsp;
                                             <Button onClick={handleClose} color="primary" >
@@ -241,10 +217,10 @@ const Add_Event = (props) => {
                                     </Form>
                                 )}
                             </Formik>
-                            {/* </Grid> */}</Box>
+                           </Box>
                     </DialogContent>
                 </center>
-                {/* </Paper> */}
+               
                 <Snack
                     notify={notify}
                     setNotify={setNotify}
@@ -252,7 +228,7 @@ const Add_Event = (props) => {
                 <UploadImage imgdialog={imgdialog}
                     setImgdialog={setImgdialog} />
 
-                {/* </Grid> */}
+               
             </Dialog>
         </Fragment>
     )
